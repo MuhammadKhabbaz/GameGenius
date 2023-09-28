@@ -23,10 +23,15 @@ header{
     background-color: rgba(211, 58, 2, 0.907); 
     border-top-left-radius: 1em 5em; 
     border-bottom-left-radius: 1em 5em;
-    padding-top: 50px;
-    padding-left: 20px;
+    padding-top: 25px;
+    padding-left: 30px;
 }
-
+#GameGenius:hover{
+    background-color: rgba(255, 118, 68, 0.907);
+    transition: 0.3s;
+    text-decoration: none;
+    
+}
 #gameGeniusTitle{
     font-size: 20px;
     text-align: center;
@@ -43,7 +48,7 @@ header{
 }
 
 #searchInput{
-    width: 70%;
+    width: 100%;
     padding: 20px;
     font-size: 20px;
     display: flex;
@@ -55,27 +60,16 @@ header{
     width: 100%;
 
 }
-#containerFilters{
-    position: relative;
-    
-    width: 100%;
-    background-color: rgb(144, 144, 251);
-    padding: 10px;
-    text-align: center;
-    padding-top: 25px;
-    font-size: 15px;
-    color: black;
-    font-weight: bold;
-    padding: 10px;
-}
+
 
 .btnSelectFilter{
-    padding:5px;
+    padding:25px;
     display: flex;
     flex-direction: row;
     font-size: 15px;
     cursor: pointer;
-    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
 }
 #iconFilters{
    padding-right: 5px;
@@ -83,6 +77,11 @@ header{
 .formFilter{
     display: flex;
     flex-direction: row;
+}
+/* This dropdown should appear after press filters */
+.dropdown{
+    display: none;
+    background-color: rgb(144, 144, 251);;
 }
 #platformSelector{
     margin-left: 31px; 
@@ -134,7 +133,7 @@ header{
     border: black solid 2px;
     margin-right: 10px;
     width: 40%;
-    background-image: url();
+    background-image: url(images/Chayka-Mario.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 30px 0px 30px 0px;
@@ -187,10 +186,5 @@ a{
     text-decoration: none;
     color: black;
     padding: 10px;
-}
-
-a:hover{
-    color: rgb(53, 0, 102);
-    font-weight: bold;
 }
 
