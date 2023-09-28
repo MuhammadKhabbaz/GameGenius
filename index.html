@@ -7,15 +7,75 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- link to fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">    
     <title>Document</title>
 </head>
 <body>
 <header>
     <div id="GameGenius">
-        <h1>Game Genius!</h1>
+        <a id="gameGeniusTitle" href="#">Game Genius!</a>
     </div>
-    <div id="searchBar">Search bar</div>
-    <div id="filter">Filters</div>
+    <!-- This is the containerSearch, contains search input, another div with the filters and a button to submit the information -->
+    <div class="containerSearch">
+        <div class="inputGroup">
+            <input id="searchInput" type="text" class="form-control" placeholder="Search" aria-label="Recipient's username with two button addons">
+            <!-- This div contains a button that after being selected the ul will be displayed. -->
+            <div id="containerFilters">
+                <button class="btnSelectFilter" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i id="iconFilters" class="fa-solid fa-sliders"></i> Filters
+                </button>
+                <!-- Inside this ul they are 4 forms with some options of each select  -->
+                <ul class="dropdown">
+                        <form class="formFilter" action="">Select platform
+                            <select name="" id="platformSelector">
+                                <option disabled selected>Platform</option>
+                                <option value="">PlayStation</option>
+                                <option value="">Nintendo</option>
+                                <option value="">Xbox</option>
+                                <option value="">Steam</option>
+                            </select>
+                        </form>
+                        <form class="formFilter" action="">Select genre
+                            <select name="" id="genreSelector">
+                                <option disabled selected>Genre</option>
+                                <option value="">Adventure</option>
+                                <option value="">Action</option>
+                                <option value="">Role-playing</option>
+                                <option value="">Multiplayer</option>
+                                <option value="">Fighting</option>
+                                <option value="">Racing</option>
+                                <option value="">Survival</option>
+                                <option value="">Horror</option>
+                                <option value="">Strategy</option>
+                                <option value="">Simulation</option>
+                                <option value="">Sports</option>
+                            </select>
+                        </form>
+                        <form class="formFilter" action="">Number of players
+                            <select name="" id="playersSelector">
+                                <option disabled selected>Players</option>
+                                <option value="">1 player</option>
+                                <option value="">2 playes</option>
+                                <option value="">More than 3 players</option>
+                            </select>
+                        </form>
+                        <form class="formFilter" action="">Maturity
+                            <select name="" id="maturitySelector">
+                                <option disabled selected>Maturity</option>
+                                <option value="">General (G)</option>
+                                <option value="">Parental Guidance (PG)</option>
+                                <option value="">Mature (M)</option>
+                                <option value="">Mature Accompanied (MA 15+)</option>
+                                <option value="">Restricted (R 18+)</option>
+                            </select>
+                        </form>
+                </ul>  
+            </div>
+        </div>  
+        <!-- This button submit all the search info   -->
+        <button id="buttonSearch" class="btn btn-outline-secondary" type="button">Search</button>
+    </div>
 </header>
 <section id="newsSection">
     <h1 id="gameTitle">Super Mario Bros. Wonder</h1>
