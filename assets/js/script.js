@@ -54,6 +54,16 @@ function handleSearchButton(){
 
 // Search button event
 searchButtonEl.on('click', handleSearchButton);
+// Pressing enter key
+$('#searchInput').keypress(function (e) {
+    var key = e.which;
+    if(key == 13)  // the enter key code
+     {
+        searchButtonEl.click();
+       return false;  
+     }
+});  
+
 
 // TODO: Need add a function for filter parameters and add it to search or call another api
 function filterGenres(){
@@ -120,6 +130,11 @@ function getGenres(){
     return genreList;
 }
 
+// ADD something here for autocomplete filters.
+
+
+
+
 
 // List of Platforms available for RAWG API
 function getPlatforms(){
@@ -136,6 +151,10 @@ function getPlatforms(){
 }
 // getPlatforms();
 
+// Returns to landing page
+$('#gameGeniusTitle').on('click', function () {
+    window.location.reload();
+})
 
 // Initialize page
 function init(){
