@@ -98,11 +98,12 @@ prevBtnEl.on('click', function () {
 });
 
 
+//*************************** SOME OTHER CATEGORIES WE MIGHT NEED ***************************
 
-
-// SOME OTHER CATEGORIES WE MIGHT NEED
 // List of genres available for RAWG API
+// returns an array of genres, we can add to genre filter
 function getGenres(){
+    var genreList = [];
     var url = 'https://api.rawg.io/api/genres' + apiKey;
     fetch(url)
         .then(function (response) {
@@ -111,9 +112,14 @@ function getGenres(){
         // Do something/ call a function
         .then(function (data) {
             console.log(data);
+            for (var i =0; i<data.results.length; i++) {
+                genreList.push(data.results[i].slug);
+            }
+            console.log(genreList);
         })
+    return genreList;
 }
-getGenres();
+
 
 // List of Platforms available for RAWG API
 function getPlatforms(){
@@ -138,6 +144,8 @@ function init(){
     nextBtnEl.css('display', 'none');
     localStorage.setItem('prev', JSON.stringify(null));
     localStorage.setItem('next', JSON.stringify(null));
+
+    getGenres();
 
 }
 init();
