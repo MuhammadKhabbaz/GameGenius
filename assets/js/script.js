@@ -29,6 +29,7 @@ function rawgGames(url) {
             // Call function to generate game lists based on data results
             generateGameList(data.results);
             // Display prev and next buttons
+            sortByContainerEl.css('display', 'block');
             prevBtnEl.css('display', 'inline');
             nextBtnEl.css('display', 'inline');
             prev = data.previous
@@ -48,7 +49,8 @@ function rawgGames(url) {
 function handleSearchButton() {
     gamelistEl.empty();
     console.log('SEARCH PRESSED');
-    var searchInputEl = '&search=';
+    // limit search to 10 results per page
+    var searchInputEl = '&page_size=10&search=';
     searchInputEl += $('#searchInput').val().trim();
     // searchInputEl += filterGenres();
     rawgGames(rawgUrl + apiKey + searchInputEl);
@@ -80,15 +82,20 @@ function generateGameList(searchResults) {
     for (var i = 0; i < searchResults.length; i++) {
         // console.log(searchResults[i].name);
 
-        // TODO need to add class name for css game cards
+        // Create list for game results
         var gameListItemEl = $('<li class="box">');
+        // Create img element for each game card result
         var gameImgEL = $('<img>').attr('src', searchResults[i].background_image);
-        // sample might be removed
         gameImgEL.css({ 'width': '10%', 'height': '10%' });
+        // Create link element for clickable game title
         var gameNameEl = $('<a>').text(searchResults[i].name).attr('href', "gamePage.html");
         gameNameEl.css('display', 'block');
+        // Call getRating to get game rating
+        var gameRatingEl = getRating(searchResults[i].rating_top);
+        // Call getPlatformList to create available platforms in icons
         var gamePlatformEl = getPlatformList(searchResults[i]);
-        gameListItemEl.append(gameNameEl, gameImgEL, gamePlatformEl);
+        // Append everything to list element
+        gameListItemEl.append(gameNameEl, gameImgEL, gameRatingEl, gamePlatformEl);
         gamelistEl.append(gameListItemEl);
     }
 }
@@ -106,19 +113,39 @@ function getPlatformList(results) {
         platformArr.push(platforms[i].platform.slug);
     }
     console.log(platformArr);
-    
+
     for (var i = 0; i < platformArr.length; i++) {
-        if(iconRef.includes(platformArr[i])){
+        if (iconRef.includes(platformArr[i])) {
             var iconIndex = iconRef.indexOf(platformArr[i]);
             var icons = $('<i>').addClass(iconClass[iconIndex]);
             var span = $('<span class="icon is-small">');
             span.append(icons);
-            var link = $('<a id="'+iconArr[iconIndex]+'" class="level-item"  aria-label="reply">')
+            var link = $('<a id="' + iconArr[iconIndex] + '" class="level-item"  aria-label="reply">')
             link.append(span);
             divPlatform.append(link);
         }
     }
     return divPlatform;
+}
+
+function getRating(num) {
+    console.log(num);
+    var divRating = $('<p>')
+    
+    for (var i = 1; i <= 5; i++) {
+        var rating = $('<i>');
+        if (num >= i) {
+            // create full star
+            rating.addClass('fa-solid fa-star');
+        } else {
+            // create empty star
+            rating.addClass('fa-regular fa-star');
+        }
+       
+        divRating.append(rating);
+    }
+    divRating.append(' Rating');
+    return divRating;
 }
 
 // Initial Pagination functions
@@ -195,10 +222,10 @@ function init() {
     sortByContainerEl.css('display', 'none');
     localStorage.setItem('prev', JSON.stringify(null));
     localStorage.setItem('next', JSON.stringify(null));
-    console.log('GENRE--------');
-    getGenres();
-    console.log('PLATFORM--------');
-    getPlatforms();
+    // console.log('GENRE--------');
+    // getGenres();
+    // console.log('PLATFORM--------');
+    // getPlatforms();
 
 }
 init();
