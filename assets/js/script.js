@@ -134,8 +134,16 @@ function generateGameList(searchResults) {
         var gameRatingEl = getRating(searchResults[i].rating_top);
         // Call getPlatformList to create available platforms in icons
         var gamePlatformEl = getPlatformList(searchResults[i]);
+
+        var gameGenres = getGenreList(searchResults[i].genres);
+        var gameESRB = $('<h5 class="subtitle is-6">');
+        if (searchResults[i].esrb_rating !== null) {
+            gameESRB.text(searchResults[i].esrb_rating.name)
+        } else {
+            gameESRB.text('None');
+        }
         // Append everything to list element
-        gameListItemEl.append(gameNameEl, gameImgEL, gameRatingEl, gamePlatformEl);
+        gameListItemEl.append(gameNameEl, gameImgEL, gameRatingEl, gamePlatformEl, gameGenres, gameESRB);
 
         gamelistEl.append(gameListItemEl);
     }
@@ -153,9 +161,7 @@ function handleGameLink(event) {
 
 }
 
-
 gamelistEl.on('click', '.gameLink', handleGameLink);
-
 
 // Generate platforms
 function getPlatformList(results) {
@@ -206,6 +212,16 @@ function getRating(num) {
     divRating.append(' Rating');
     return divRating;
 }
+
+function getGenreList(genres){
+    var div = $('<div class="tags">');
+    for (var i = 0; i < genres.length; i++) {
+        var genre = $('<span class="tag">').text(genres[i].name);
+        div.append(genre);
+    }
+    return div;
+}
+
 
 // Initial Pagination functions
 // When next button is clicked move next results
