@@ -89,10 +89,11 @@ function generateGameList(searchResults) {
 
         // Create list for game results
         var gameListItemEl = $('<li class="box">');
-      
+
         var gameImgEL = $('<img class="imgCard">').attr('src', searchResults[i].background_image);
         // Create link element for clickable game title
-        var gameNameEl = $('<a>').text(searchResults[i].name).attr('href', "gamePage.html");
+        var gameNameEl = $('<a>').text(searchResults[i].name).attr('data-gameid', searchResults[i].id);
+
         gameNameEl.addClass('gameLink');
         gameNameEl.css('display', 'block');
         // Call getRating to get game rating
@@ -106,8 +107,15 @@ function generateGameList(searchResults) {
     }
 }
 
-function handleGameLink(event){
-var gameLinkClicked = (event.target);
+function handleGameLink(event) {
+    // var gameLinkClicked = (event.target);
+    var element = event.target;
+    if (element.matches("a") === true) {
+        var gameID = element.dataset.gameid
+        console.log(gameID);
+        localStorage.setItem('gameID', JSON.stringify(gameID));
+        window.location.replace('gamePage.html');
+    }
 
 }
 
@@ -148,7 +156,7 @@ function getPlatformList(results) {
 function getRating(num) {
     console.log(num);
     var divRating = $('<p>')
-    
+
     for (var i = 1; i <= 5; i++) {
         var rating = $('<i>');
         if (num >= i) {
@@ -158,7 +166,7 @@ function getRating(num) {
             // create empty star
             rating.addClass('fa-regular fa-star');
         }
-       
+
         divRating.append(rating);
     }
     divRating.append(' Rating');
@@ -235,6 +243,7 @@ function init() {
 
     localStorage.setItem('prev', JSON.stringify(null));
     localStorage.setItem('next', JSON.stringify(null));
+    localStorage.setItem('gameID', JSON.stringify(null));
     // console.log('GENRE--------');
     // getGenres();
     // console.log('PLATFORM--------');
