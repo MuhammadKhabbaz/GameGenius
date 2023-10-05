@@ -87,7 +87,6 @@
                 </div>  
                 <!-- This is the submit button that submits all the filters and the search -->
                 <div class="navbar-item" id="submitContainer">
-                    <!-- missing href="cardResult.html" -->
                     <button id="buttonSearch" class="button is-danger" ><strong>Submit</strong></button>
                 </div>
             </div>
@@ -225,8 +224,18 @@
 </section>
 
 <section id="gameCards">
-     <!--This is the sort by-->
-    <button id="buttonSortBy" class="button is-warning" ><strong>Sort by</strong></button>
+ <!--This is the sort by-->
+    <div class="navbar-item has-dropdown is-hoverable is-warning" id="buttonSortBy" >
+        <form class="formSort" action=""><p class="filterSelectText">Sort By</p>
+            <select id="platformSelector2">
+                <option id="optionSort" disabled selected>...</option>
+                <option id="optionSort" value="">Name</option>
+                <option id="optionSort" value="">Rating</option>
+                <option id="optionSort" value="">Release Date</option>
+                <option id="optionSort" value="">Date</option>
+            </select>
+        </form>
+    </div> 
     <ul id="gameLists"></ul>
 
     <button id="prevBtn" class="pagination-previous" type="button">Prev</button>
