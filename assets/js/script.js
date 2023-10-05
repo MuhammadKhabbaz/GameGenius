@@ -1,6 +1,7 @@
 var searchButtonEl = $('#buttonSearch');
 var gamelistEl = $('#gameLists');
 var gameCards = $('#gameCards');
+var buttonSortBy = $('#buttonSortBy');
 
 var prevBtnEl = $('#prevBtn');
 var nextBtnEl = $('#nextBtn');
@@ -29,7 +30,9 @@ function rawgGames(url) {
             // Call function to generate game lists based on data results
             generateGameList(data.results);
             // Display prev and next buttons
-            sortByContainerEl.css('display', 'block');
+
+            buttonSortBy.css('display', 'block');
+
             prevBtnEl.css('display', 'inline');
             nextBtnEl.css('display', 'inline');
             prev = data.previous
@@ -84,9 +87,8 @@ function generateGameList(searchResults) {
 
         // Create list for game results
         var gameListItemEl = $('<li class="box">');
-        // Create img element for each game card result
-        var gameImgEL = $('<img>').attr('src', searchResults[i].background_image);
-        gameImgEL.css({ 'width': '10%', 'height': '10%' });
+      
+        var gameImgEL = $('<img class="imgCard">').attr('src', searchResults[i].background_image);
         // Create link element for clickable game title
         var gameNameEl = $('<a>').text(searchResults[i].name).attr('href', "gamePage.html");
         gameNameEl.css('display', 'block');
@@ -96,6 +98,7 @@ function generateGameList(searchResults) {
         var gamePlatformEl = getPlatformList(searchResults[i]);
         // Append everything to list element
         gameListItemEl.append(gameNameEl, gameImgEL, gameRatingEl, gamePlatformEl);
+
         gamelistEl.append(gameListItemEl);
     }
 }
@@ -214,8 +217,8 @@ function init() {
     // Hide pagination buttons on landing page
     prevBtnEl.css('display', 'none');
     nextBtnEl.css('display', 'none');
-    gameCardsResultEl.css('display', 'none');
-    sortByContainerEl.css('display', 'none');
+    buttonSortBy.css('display', 'none');
+
     localStorage.setItem('prev', JSON.stringify(null));
     localStorage.setItem('next', JSON.stringify(null));
     // console.log('GENRE--------');
