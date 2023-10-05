@@ -8,8 +8,6 @@
     <title>GameGenius</title>
      <!-- link to fontawesome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">   
-    <!-- Link to fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">  
     <!-- Link to Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <!-- Link to css file -->
@@ -26,17 +24,17 @@
 <body>
     <!-- This it the titlelogo with a link -->
     <div id="GameGenius">
-    <a class="navbar-item" id="gameGeniusTitle" href="#">Game Genius</a>
+        <a class="navbar-item" id="gameGeniusTitle" href="index.html">Game Genius</a>
     </div>
     <!-- This is the navigation bar -->
     <nav class="navbar" role="navigation" aria-label="main navigation" id="containerNav">
         <!-- This div contains: search input, filters with options and submit button -->
         <div id="navbarBasicExample" class="navbar-menu is-active">
-            <div class="column is-three-quarters" id="search">
+            <div class="column is-two-thirds" id="search">
                 <input id="searchInput" class="input is-rounded" type="text" placeholder="Info input">
             </div>
             <!-- This filter link contains selects and options -->
-            <div class="navbar-end">
+            <div class="navbar">
                 <div class="navbar-item has-dropdown is-hoverable" >
                     <a class="navbar-link" id="filters"><i id="iconFilters" class="fa-solid fa-sliders"></i>Filters</a>
 
@@ -81,21 +79,11 @@
                                 <option value="7">Multiplayer</option>
                             </select>
                         </form>
-                        <!-- <form id="formMaturity" class="formFilter" action=""><p class="filterSelectText">Maturity</p>
-                            <select id="maturitySelector">
-                                <option disabled selected>Maturity</option>
-                                <option value="everyone">General (G)</option>
-                                <option value="everyone-10-plus">Parental Guidance (PG)</option>
-                                <option value="teen">Mature (M)</option>
-                                <option value="mature">Mature Accompanied (MA 15+)</option>
-                                <option value="adults-only">Restricted (R 18+)</option>
-                            </select>
-                        </form> -->
+
                     </div>
                 </div>  
                 <!-- This is the submit button that submits all the filters and the search -->
                 <div class="navbar-item" id="submitContainer">
-                    <!-- missing href="cardResult.html" -->
                     <button id="buttonSearch" class="button is-danger" ><strong>Submit</strong></button>
                 </div>
             </div>
@@ -120,7 +108,7 @@
                         <img src="Assets/css/images/assasing.png" alt="img-game">
                     </div>
                     <div class="card-content" id="textNews">
-                        <a href=""><p class="title is-size-5" id="gameTitle">Assassin's Creed Mirage</p></a>
+                        <a href="gamePage.html"><p class="title is-size-5" id="gameTitle">Assassin's Creed Mirage</p></a>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
                     </div>
@@ -152,7 +140,7 @@
                         <img src="Assets/css/images/Starfield.png" alt="img-game">
                     </div>
                     <div class="card-content" id="textNews">
-                        <a href=""><p class="title is-size-5" id="gameTitle">Starfield</p></a>
+                        <a href="gamePage.html"><p class="title is-size-5" id="gameTitle">Starfield</p></a>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
                     </div>
@@ -181,7 +169,7 @@
                         <img src="Assets/css/images/Dead-Island-2.jpg" alt="img-game">
                     </div>
                     <div class="card-content" id="textNews">
-                        <a href=""><p class="title is-size-5" id="gameTitle">Dead Island 2</p></a>
+                        <a href="gamePage.html"><p class="title is-size-5" id="gameTitle">Dead Island 2</p></a>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
                     </div>
@@ -213,7 +201,7 @@
                         <img src="Assets/css/images/Zelda.jpg" alt="img-game">
                     </div>
                     <div class="card-content" id="textNews">
-                        <a href=""><p class="title is-size-5" id="gameTitle">The Legend of Zelda: Tears of the Kingdom</p></a>
+                        <a href="gamePage.html"><p class="title is-size-5" id="gameTitle">The Legend of Zelda: Tears of the Kingdom</p></a>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
                     </div>
@@ -231,55 +219,24 @@
 
     </div>
 </section>
+
 <section id="gameCards">
-    <div id="sortByContainer" class="navbar-end">
-        <div class="navbar-item has-dropdown is-hoverable" >
-          <a class="navbar-link" id="sortBy" class="fa-solid fa-sliders">Sort by</a>
-          <div class="navbar-dropdown" id="filtersDropdown">
-            <form class="formFilter" action=""><p class="filterSelectText">Alphabetical order</p>
-              <select id="platformSelector">
-                <option disabled selected>yes/no</option>
-                <option value="">yes</option>
-                <option value="">no</option>
-              
-              </select>
-            </form>
-            <form class="formFilter" action=""><p class="filterSelectText">Popularity</p>
-              <select id="genreSelector">
-                <option disabled selected>5 Stars</option>
-                <option value="">4 Stars</option>
-                <option value="">3 Stars</option>
-                <option value="">2 Stars</option>
-                <option value="">1 Stars</option>
-              </select>
-            </form>
-            <form class="formFilter" action=""><p class="filterSelectText">Prices</p>
-              <select id="playersSelector">
-                <option disabled selected>prices</option>
-                <option value="">0-20$</option>
-                <option value="">20-50$</option>
-                <option value="">50-80$</option>
-                <option value="">80 - max $</option>
-              </select>
-            </form>
-            <form class="formFilter" action=""><p class="filterSelectText">New releases</p>
-              <select id="maturitySelector">
-                <option disabled selected>yes/no</option>
-                <option value="">yes</option>
-                <option value="">no</option>
-              </select>
-            </form>
-          </div>
-        </div>  
-    </div>
-      <!-- cards -->
+ <!--This is the sort by-->
+    <div class="navbar-item has-dropdown is-hoverable is-warning" id="buttonSortBy" >
+        <form class="formSort" action=""><p class="filterSelectText">Sort By</p>
+            <select id="platformSelector2">
+                <option id="optionSort" disabled selected>...</option>
+                <option id="optionSort" value="">Name</option>
+                <option id="optionSort" value="">Rating</option>
+                <option id="optionSort" value="">Release Date</option>
+                <option id="optionSort" value="">Date</option>
+            </select>
+        </form>
+    </div> 
     <ul id="gameLists"></ul>
-        <div class="box" id="gameCardsResult"></div>
-        
-    </ul>
-    
-    <button id="prevBtn" class="btn btn-outline-secondary" type="button">Prev</button>
-    <button id="nextBtn" class="btn btn-outline-secondary" type="button">Next</button>
+
+    <button id="prevBtn" class="pagination-previous" type="button">Prev</button>
+    <button id="nextBtn" class="pagination-next" type="button">Next</button>
 </section>
 
 <script src="./assets/js/script.js"></script>
