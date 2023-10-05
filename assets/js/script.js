@@ -8,6 +8,8 @@ var nextBtnEl = $('#nextBtn');
 var gameCardsResultEl = $("#gameCardsResult");
 var sortByContainerEl = $("#sortByContainer");
 
+
+
 var prev;
 var next;
 
@@ -76,7 +78,7 @@ $('#searchInput').keypress(function (e) {
 function filterGenres() {
     var genreParam = '&genres=';
     // Get from genres tags inputs and append to genreParam var
-    genreParam += 'racing'
+    genreParam += ''
     return genreParam;
 }
 
@@ -91,6 +93,7 @@ function generateGameList(searchResults) {
         var gameImgEL = $('<img class="imgCard">').attr('src', searchResults[i].background_image);
         // Create link element for clickable game title
         var gameNameEl = $('<a>').text(searchResults[i].name).attr('href', "gamePage.html");
+        gameNameEl.addClass('gameLink');
         gameNameEl.css('display', 'block');
         // Call getRating to get game rating
         var gameRatingEl = getRating(searchResults[i].rating_top);
@@ -103,6 +106,16 @@ function generateGameList(searchResults) {
     }
 }
 
+function handleGameLink(event){
+var gameLinkClicked = (event.target);
+
+}
+
+
+gamelistEl.on('click', '.gameLink', handleGameLink);
+
+
+// Generate platforms
 function getPlatformList(results) {
     var iconRef = ['pc', 'playstation', 'xbox', 'ios', 'nintendo'];
     var iconArr = ['windows', 'playstation', 'xbox', 'apple', 'nintendo'];
@@ -131,6 +144,7 @@ function getPlatformList(results) {
     return divPlatform;
 }
 
+// Generate ratings
 function getRating(num) {
     console.log(num);
     var divRating = $('<p>')
