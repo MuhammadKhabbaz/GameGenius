@@ -80,7 +80,7 @@ function filterGenres() {
 
 function generateGameList(searchResults) {
     for (var i = 0; i < searchResults.length; i++) {
-        // console.log(searchResults[i].name);
+        console.log(searchResults[i].name);
 
         // Create list for game results
         var gameListItemEl = $('<li class="box">');
@@ -190,13 +190,9 @@ function getGenres() {
 
 // ADD something here for autocomplete filters.
 
-
-
-
-
 // List of Platforms available for RAWG API
 function getPlatforms() {
-    var url = 'https://api.rawg.io/api/platforms' + apiKey;
+    var url = 'https://api.rawg.io/api/platforms/lists/parents' + apiKey;
     fetch(url)
         .then(function (response) {
             return response.json();
@@ -225,7 +221,7 @@ function init() {
     // console.log('GENRE--------');
     // getGenres();
     // console.log('PLATFORM--------');
-    // getPlatforms();
+    getPlatforms();
 
 }
 init();
