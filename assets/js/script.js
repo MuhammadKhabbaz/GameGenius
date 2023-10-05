@@ -55,11 +55,20 @@ function rawgGames(url) {
 function handleSearchButton() {
     gamelistEl.empty();
     console.log('SEARCH PRESSED');
-
+    var genre = $("#genreSelector");
+    var platfrom = $("#platformSelector");
+    var players = $("#playersSelector");
     var searchInputEl = search();
-    // searchInputEl += filterGenres();
-    searchInputEl += filterNoPlayers();
-    searchInputEl += filterPlatforms();
+
+    if(genre.val() !== null){
+        searchInputEl += filterGenres();
+    }
+    if(platfrom.val() !== null){
+        searchInputEl += filterPlatforms();
+    }
+    if(players.val() !== null){
+        searchInputEl += filterNoPlayers();
+    }
     rawgGames(rawgUrl+apiKey+searchInputEl);
 
 }
@@ -88,7 +97,7 @@ function search(){
 function filterGenres(){
     var genreParam = '&genres=';
     // Get from genres tags inputs and append to genreParam var
-    var genreselected = $("#genreSelector")
+    var genreselected = $("#genreSelector");
     genreParam += genreselected.val()
 
     return genreParam;
@@ -316,8 +325,8 @@ function init() {
     localStorage.setItem('gameID', JSON.stringify(null));
     // console.log('GENRE--------');
     // getGenres();
-    getPlatforms();
-    getNOofPlayers();
+    // getPlatforms();
+    // getNOofPlayers();
 
 
 }
