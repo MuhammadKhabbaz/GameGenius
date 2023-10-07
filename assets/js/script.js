@@ -116,6 +116,24 @@ prevBtnEl.on('click', function () {
 });
 
 
+function youtubeSearch(url) {
+    console.log(url);
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            var firstResult = data.items[0];
+            if (firstResult) {
+                var videoId = firstResult.id.videoId;
+                var videoUrl = 'https://www.youtube.com/watch?v=' + videoId;
+                document.getElementById("linkXbox").href = videoUrl;
+            }
+        })
+}
+
+
 //*************************** SOME OTHER CATEGORIES WE MIGHT NEED ***************************
 
 // List of genres available for RAWG API
