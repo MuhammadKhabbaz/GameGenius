@@ -1,5 +1,5 @@
 const rawgapiKey = '?key=3cdf9cc32da5448dbb6bfe6c7afa0561';
-const youtubeapikey = '&key=AIzaSyAN_9Bq4hnrTpetCxnk0WxzCbZw3SnJQeQ';
+const youtubeapiKey = '&key=AIzaSyAN_9Bq4hnrTpetCxnk0WxzCbZw3SnJQeQ';
 var gameID;
 var ratingEl = $('#containerRatingCardPage');
 var linkVideo = $("#linkVideo");
@@ -16,6 +16,7 @@ function getGameDetails() {
             $('#gameTitle').text(data.name);
             $('#gameDesc').text(data.description_raw);
             ratingEl.append(getRating(data.rating_top));
+            youtubeSearch(data.name);
         })
 }
 
@@ -36,8 +37,8 @@ function getRating(num) {
     return divRating;
 }
 
-function youtubeSearch() {
-    var url = 'https://api.rawg.io/api/games/' + gameID + youtubeapiKey;
+function youtubeSearch(name) {
+    var url = 'https://www.googleapis.com/youtube/v3/search?part=' + "id,snippet" + "&q=" + name + "%20game%20trailer" + youtubeapiKey;
     fetch(url)
         .then(function (response) {
             return response.json();
@@ -47,13 +48,10 @@ function youtubeSearch() {
             var firstResult = data.items[0];
             if (firstResult) {
                 var videoId = firstResult.id.videoId;
-                var videoUrl = 'https://www.youtube.com/watch?v=' + videoId + youtubeapikey;
+                var videoUrl = 'https://www.youtube.com/watch?v=' + videoId;
                 document.getElementById("linkVideo").href = videoUrl;
             }
         })
-        .catch(function(error) {
-            console.log('Error:', error);
-        });
 }
 
 linkVideo.on('click', youtubeSearch);
