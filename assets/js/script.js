@@ -172,7 +172,6 @@ function handleGameLink(event) {
     var element = event.target;
     if (element.matches("a") === true) {
         var gameID = element.dataset.gameid
-        console.log(gameID);
         localStorage.setItem('gameID', JSON.stringify(gameID));
         window.location.replace('gamePage.html');
     }
@@ -216,10 +215,14 @@ gamelistEl.on('click', '.gameLink', handleGameLink);
 // Search button event
 searchButtonEl.on('click', handleSearchButton);
 
-$('#gameNews1').on('click', function(){
-    var gameID = "845261";
-    localStorage.setItem('gameID', JSON.stringify(gameID));
-    window.location.replace('gamePage.html');
+$('.title').on('click', function(event){
+    var element = event.target;
+    if (element.matches("p") === true) {
+        var gameID = element.dataset.gameid
+        console.log(gameID);
+        localStorage.setItem('gameID', JSON.stringify(gameID));
+        window.location.replace('gamePage.html');
+    }
 });
 // Game title returns to landing page
 $('#gameGeniusTitle').on('click', function () { window.location.reload();})
