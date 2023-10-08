@@ -8,8 +8,6 @@ var nextBtnEl = $('#nextBtn');
 var gameCardsResultEl = $("#gameCardsResult");
 var sortByContainerEl = $("#sortByContainer");
 
-
-
 var prev;
 var next;
 
@@ -78,7 +76,8 @@ function filterNoPlayers(){
 
 //*************************** GENERATE GAME CARD ***************************
 // Generate game card results
-function generateGameList(searchResults) {
+function generateGameList(searchResults) { 
+    gamelistEl.empty()
     for (var i = 0; i < searchResults.length; i++) {
         console.log(searchResults[i].name);
         // Create list for game results
@@ -200,6 +199,14 @@ function handleSearchButton() {
 
 }
 
+var platformSelector = document.getElementById('platformSelector2');
+
+platformSelector.addEventListener('change', function() {
+    const selectedOption = platformSelector.value;
+    const searchInputEl = document.getElementById('searchInput').value;
+    rawgGames(rawgUrl + apiKey + '&search=' + searchInputEl + '&ordering=' + selectedOption);
+});
+
 
 //*************************** CLICK EVENTS ***************************
 
@@ -241,6 +248,7 @@ prevBtnEl.on('click', function () {
     rawgGames(prev);
 });
 
+
 //*************************** SOME OTHER CATEGORIES WE MIGHT NEED ***************************
 
 // List of genres available for RAWG API
@@ -263,7 +271,6 @@ function getGenres() {
         })
     return genreList;
 }
-
 
 // ADD something here for autocomplete filters.
 
