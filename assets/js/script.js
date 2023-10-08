@@ -8,10 +8,6 @@ var nextBtnEl = $('#nextBtn');
 var gameCardsResultEl = $("#gameCardsResult");
 var sortByContainerEl = $("#sortByContainer");
 
-var sortBy = $("#buttonSortBy")
-
-
-
 var prev;
 var next;
 
@@ -205,7 +201,6 @@ function handleSearchButton() {
 }
 
 var platformSelector = document.getElementById('platformSelector2');
-var buttonSortBy = document.getElementById('buttonSortBy');
 
 platformSelector.addEventListener('change', function() {
     const selectedOption = platformSelector.value;
