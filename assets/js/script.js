@@ -77,16 +77,31 @@ function filterNoPlayers(){
 //*************************** GENERATE GAME CARD ***************************
 // Generate game card results
 function generateGameList(searchResults) { 
-    gamelistEl.empty()
+    gamelistEl.empty();
     for (var i = 0; i < searchResults.length; i++) {
         console.log(searchResults[i].name);
         // Create list for game results
         var gameListItemEl = $('<li class="box">');
         var gameImgEL = $('<img class="imgCard">').attr('src', searchResults[i].background_image);
+        // Create div element to hold image and details
+        var gameInfoEl = $('<div class="game-info">');
+        gameInfoEl.css({
+            'display': 'flex',
+            'justify-content': 'flex-start',
+            'align-items': 'center',
+        });
+        // Create separate div for title and rating
+        var cardDetailsEl = $('<div>');
+        cardDetailsEl.css({
+            'display': 'flex',
+            'flex-direction': 'column',
+            'padding-left': '15px',
+            'width': '100%'
+        });
         // Create link element for clickable game title
         var gameNameEl = $('<a>').text(searchResults[i].name).attr('data-gameid', searchResults[i].id);
         gameNameEl.addClass('gameLink');
-        gameNameEl.css('display', 'block');
+        gameNameEl.css('display', 'relative');
         // Call getRating to get game rating
         var gameRatingEl = getRating(searchResults[i].rating_top);
         // Call getPlatformList to create available platforms in icons
@@ -98,12 +113,14 @@ function generateGameList(searchResults) {
         } else {
             gameESRB.text('None');
         }
-        // Append everything to list element
-        gameListItemEl.append(gameNameEl, gameImgEL, gameRatingEl, gamePlatformEl, gameGenres, gameESRB);
+        // Append title and rating to separate div
+        cardDetailsEl.append(gameNameEl, gameRatingEl, gameGenres, gameESRB);
+        // Append everything to game-info element
+        gameInfoEl.append(gameImgEL, cardDetailsEl, gamePlatformEl);
+        gameListItemEl.append(gameInfoEl);
         gamelistEl.append(gameListItemEl);
     }
 }
-
 // Generate platforms
 function getPlatformList(results) {
     var iconRef = ['pc', 'playstation', 'xbox', 'ios', 'nintendo'];
@@ -111,13 +128,12 @@ function getPlatformList(results) {
     var iconClass = ['fa-brands fa-windows', 'fa-brands fa-playstation', 'fa-brands fa-xbox', 'fa-brands fa-apple', 'fa-solid fa-gamepad'];
     
     var platformArr = [];
-    var platforms = results.parent_platforms
-    var divPlatform = $('<div class="level-left">');
+    var platforms = results.parent_platforms;
+    var divPlatform = $('<div class="level-right flex-end">');
     
     for (var i = 0; i < platforms.length; i++) {
         platformArr.push(platforms[i].platform.slug);
     }
-    console.log(platformArr);
     
     for (var i = 0; i < platformArr.length; i++) {
         if (iconRef.includes(platformArr[i])) {
@@ -125,14 +141,14 @@ function getPlatformList(results) {
             var icons = $('<i>').addClass(iconClass[iconIndex]);
             var span = $('<span class="icon is-small">');
             span.append(icons);
-            var link = $('<a id="' + iconArr[iconIndex] + '" class="level-item"  aria-label="reply">')
+            var link = $('<a id="' + iconArr[iconIndex] + '" class="level-item"  aria-label="reply">');
             link.append(span);
             divPlatform.append(link);
         }
     }
+    
     return divPlatform;
 }
-
 // Get ratings of games
 function getRating(num) {
     console.log(num);
@@ -151,6 +167,7 @@ function getRating(num) {
         divRating.append(rating);
     }
     divRating.append(' Rating');
+    divRating.css('justify-content', 'end');
     return divRating;
 }
 
