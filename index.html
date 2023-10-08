@@ -42,52 +42,48 @@
                         <form class="formFilter" action=""><p class="filterSelectText">Select platform</p>
                             <select id="platformSelector">
                                 <option disabled selected>Platform</option>
-                                <option value="">PlayStation</option>
-                                <option value="">Nintendo</option>
-                                <option value="">Xbox</option>
-                                <option value="">Steam</option>
+                                <option value="2">Play Station</option>
+                                <option value="3">Xbox</option>
+                                <option value="1">PC</option>
+                                <option value="7">Nintendo</option>
+                                <option value="4">IOS</option>
                             </select>
                         </form>
                         <form class="formFilter" action=""><p class="filterSelectText">Select genre</p>
                             <select id="genreSelector">
                                 <option disabled selected>Genre</option>
-                                <option value="">Adventure</option>
-                                <option value="">Action</option>
-                                <option value="">Role-playing</option>
-                                <option value="">Multiplayer</option>
-                                <option value="">Fighting</option>
-                                <option value="">Racing</option>
-                                <option value="">Survival</option>
-                                <option value="">Horror</option>
-                                <option value="">Strategy</option>
-                                <option value="">Simulation</option>
-                                <option value="">Sports</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="action">Action</option>
+                                <option value="role-playing-games-rpg">RPG</option>
+                                <option value="massively-multiplayer">Multiplayer</option>
+                                <option value="fighting">Fighting</option>
+                                <option value="casual">Casual</option>
+                                <option value="racing">Racing</option>
+                                <option value="shooting">Shooting</option>
+                                <option value="strategy">Strategy</option>
+                                <option value="simulation">Simulation</option>
+                                <option value="sports">Sports</option>
+                                <option value="puzzle">Puzzle</option>
+                                <option value="arcade">Arcade</option>
+                                <option value="platformer">Platformer</option>
+                                <option value="family">Family</option>
+                                <option value="board-games">Board Games</option>
+                                <option value="educational">Educational</option>
+                                <option value="card">Card</option>
                             </select>
                         </form>
                         <form class="formFilter" action=""><p class="filterSelectText">Number of players</p>
                             <select id="playersSelector">
                                 <option disabled selected>Players</option>
-                                <option value="">1 player</option>
-                                <option value="">2 playes</option>
-                                <option value="">More than 3 players</option>
+                                <option value="31">Singleplayer</option>
+                                <option value="7">Multiplayer</option>
                             </select>
                         </form>
-                        <form id="formMaturity" class="formFilter" action=""><p class="filterSelectText">Maturity</p>
-                            <select id="maturitySelector">
-                                <option disabled selected>Maturity</option>
-                                <option value="">General (G)</option>
-                                <option value="">Parental Guidance (PG)</option>
-                                <option value="">Mature (M)</option>
-                                <option value="">Mature Accompanied (MA 15+)</option>
-                                <option value="">Restricted (R 18+)</option>
-                            </select>
-                        </form>
-                        
+
                     </div>
                 </div>  
                 <!-- This is the submit button that submits all the filters and the search -->
                 <div class="navbar-item" id="submitContainer">
-                    <!-- missing href="cardResult.html" -->
                     <button id="buttonSearch" class="button is-danger" ><strong>Submit</strong></button>
                 </div>
             </div>
@@ -112,9 +108,8 @@
                         <img src="Assets/css/images/assasing.png" alt="img-game">
                     </div>
                     <div class="card-content" id="textNews">
-                        <a href="gamePage.html"><p class="title is-size-5" id="gameTitle">Assassin's Creed Mirage</p></a>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate reprehenderit quam distinctio hic ea eveniet voluptatum cum culpa? Veniam temporibus cum excepturi et ullam nostrum quos qui delectus culpa. Vero!</p>
+                        <a id="gameNews1" data-gamid="845261"><p class="title is-size-5" id="gameTitle">Assassin's Creed Mirage</p></a>
+                        <p>Experience the story of Basim, a cunning street thief seeking answers and justice as he navigates the bustling streets of ninth–century Baghdad. In Assassin's Creed Mirage, you are Basim, a cunning street thief with nightmarish visions seeking answers and justice. Join an ancient organization and come to understand a new creed – one that will change Basim’s fate in ways he never could have imagined. Parkour seamlessly through the city and leverage the largest assortment of tools to date, and stealthily take down targets with more visceral assassinations than ever before. Discover a narrative-driven action-adventure experience that follows the transformation of a defiant young man into a refined Master Assassin with a conflicted destiny. Journey to Alamut, the legendary home of the Assassins who laid the foundations of the Creed in this heartfelt homage to the game that started it all.</p>
                     </div>
                     <footer class="card-footer" id="containerIcons">
                         <p class="card-footer-item">
@@ -223,10 +218,22 @@
 
     </div>
 </section>
+
 <section id="gameCards">
-     <!--This is the sort by-->
-    <button id="buttonSortBy" class="button is-warning" ><strong>Sort by</strong></button>
+ <!--This is the sort by-->
+    <div class="navbar-item has-dropdown is-hoverable is-warning" id="buttonSortBy" >
+        <form class="formSort" action=""><p class="filterSelectText">Sort By</p>
+            <select id="platformSelector2">
+                <option id="optionSort" disabled selected>...</option>
+                <option id="optionSort" value="">Name</option>
+                <option id="optionSort" value="">Rating</option>
+                <option id="optionSort" value="">Release Date</option>
+                <option id="optionSort" value="">Date</option>
+            </select>
+        </form>
+    </div> 
     <ul id="gameLists"></ul>
+
     <button id="prevBtn" class="pagination-previous" type="button">Prev</button>
     <button id="nextBtn" class="pagination-next" type="button">Next</button>
 </section>
