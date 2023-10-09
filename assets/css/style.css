@@ -60,7 +60,7 @@ a:hover{
     margin-top: 10px;
     height: 100px;
     width: 150px;  
-    justify-content: left;
+    justify-content: right;
 }
 #containerRatingCardPage{
     margin-left: 20px;
@@ -113,4 +113,13 @@ a:hover{
     background-color: hsl(217, 71%, 53%); 
     color: hsl(0, 0%, 100%);
     cursor: pointer;
+}
+
+.game-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.gameLink {
+    display: block;
 }
